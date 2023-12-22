@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <title>Quản Lý Kho hàng</title>
+</head>
+
+<body>
+    <h1>Quản Lý Kho hàng</h1>
+    <div>
+        <div>
+            <button onclick="toggleProductList()">Xem Danh Sách Sản Phẩm</button>
+            <table id="list" border="1">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>PriceInput</th>
+                    <th>PriceOutput</th>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <button onclick="createReceipt()">Tạo Phiếu Nhập</button>
+            <div id="receiptForm">
+                <div>
+                    <label>ID Phiếu Nhập Kho</label>
+                    <input type="text" id="receiptId">
+                    <label>User Name</label>
+                    <input type="text" id="userName">
+                    <label>Sản Phẩm</label>
+                    <select id="productId">
+                        <!-- Duyệt qua danh sách sản phẩm để tạo các tùy chọn -->
+                        <!-- Mỗi option có giá trị là id của sản phẩm -->
+                    </select>
+                    <label>Quantity</label>
+                    <input type="text" id="quantity">
+                    <button onclick="submitReceipt()">Submit</button>
+                </div>
+                <div>
+                    <label>Danh Sách Phiếu Nhập</label>
+                    <table border="1" id="receiptList">
+                        <tr>
+                            <th>Id</th>
+                            <th>UserName</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>CreatedAt</th>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <label>Danh Sách Chi Tiết Phiếu Nhập Kho</label>
+                    <table border="1" id="receiptDetailList">
+                        <tr>
+                            <th>Id</th>
+                            <th>IdReceipt</th>
+                            <th>IdProduct</th>
+                            <th>Name</th>
+                            <th>IdCategory</th>
+                            <th>PriceInput</th>
+                            <th>PriceOutput</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div>
+                <button onclick="viewWarehouse()">Xem Kho</button>
+                <div>
+                    <p>Sản Phẩm Tồn Kho</p>
+                    <table id="stockTable" border="1">
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>PriceInput</th>
+                            <th>PriceOutput</th>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <p>Danh Sách Các Phiếu Nhập kho</p>
+                    <table border="1" id="stockReceiptTable">
+                        <tr>
+                            <th>Id</th>
+                            <th>IdReceipt</th>
+                            <th>IdProduct</th>
+                            <th>Name</th>
+                            <th>IdCategory</th>
+                            <th>PriceInput</th>
+                            <th>PriceOutput</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button onclick="listItemsByDate()">Liệt Kê Hàng Đã Nhập</button>
+            <div id="itemListByDate">
+                <p>Những Mặt Hàng</p>
+                <table border="1" id="itemListByDateTable">
+                    <tr>
+                        <th>ID Sản Phẩm</th>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>CreatedAt</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div>
+            <button onclick="viewImportReceipts()">Xem Phiếu Nhập Kho</button>
+                <div>
+                    <div>
+                        <label>Nhập Mã Kho</label>
+                        <input id="warehouseId">
+                        <button onclick="enterWarehouse()">Enter</button>
+                    </div>
+                    <div>
+                        <label>Danh Sách Chi Tiết Phiếu Nhập Kho</label>
+                        <table border="1" id="warehouseDetailList">
+                            <tr>
+                                <th>IdReceipt</th>
+                                <th>IdProduct</th>
+                                <th>Name</th>
+                                <th>IdCategory</th>
+                                <th>PriceInput</th>
+                                <th>PriceOutput</th>
+                                <th>Quantity</th>
+                                <th>CreatedAt</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+        </div>
+        <div>
+            <button onclick="updateProductPrices()">Cập Nhật Giá Của Sản Phẩm</button>
+            <div>
+                <label>ID Sản Phẩm</label>
+                <input id="updateProductId">
+                <label>Cập Nhật Giá</label>
+                <input id="updateProductPrice">
+                <button onclick="updateProductPrices()">Cập Nhật</button>
+            </div>
+        </div>
+    </div>
+    <script src="/index.js"></script>
+</body>
+
+</html>
